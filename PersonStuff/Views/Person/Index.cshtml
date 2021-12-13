@@ -1,0 +1,64 @@
+﻿@model PeopleViewModel
+@{
+    ViewData["Title"] = "List";
+}
+
+<div class="container">
+    <div>
+        <form asp-controller="Person" asp-action="Index" method="post">
+            <input type="submit" value="    Search     " />&emsp;
+            <input type="text" name="SearchString" />
+        </form>
+        <br />
+    </div>
+
+    <div>
+        <form asp-controller="Person" asp-action="AddPerson" method="post">
+            <input type="submit" value=" Add Person " />&emsp;
+            <input type="text" name="name" />
+            <label for="html">Name</label><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;
+            <input type="text" name="phone" />
+            <label for="html">Phone</label><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;
+            <input type="text" name="city" />
+            <label for="html">City</label>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in Model.Persons)
+            {
+                <partial name="_partialPerson" model="person" />
+            }
+        </tbody>
+    </table>
+</div>
+
+@*<form asp-controller="Person" asp-action="Index" method="post">
+        <input type="submit" value="Hall of Fame" />
+    </form>
+    <br />*@
+
+@*@if (Model.Persons.Count() != 0)
+    {
+@foreach (var person in Model.Persons)
+{
+    <partial name="_partialPerson" model="person" />
+}
+}
+    else
+    {
+        <tr>
+            <td>No hits found</td>
+        </tr>
+    }*@
